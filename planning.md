@@ -36,13 +36,16 @@ graph TD
     classDef storage fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
 
     %% Submission Flow
-    subgraph Submission Flow [POST /submit]
-        A[User Text Content] --> B(POST /submit)
-        B --> C[Signal 1: Groq LLM Semantic Assessment]
-        B --> D[Signal 2: Python Stylometric Variance]
+    subgraph SubmissionFlow [POST /submit]
+        direction TD
         
-        C -->|LLM Score 0-1| E[Ensemble Scorer]
-        D -->|Math Score 0-1| E
+        A[User Text Content] --> B(POST /submit)
+        
+        %% Chained visually to force a single vertical column
+        B -->|Trigger Parallel Signals| C[Signal 1: Groq LLM Semantic Assessment]
+        C --> D[Signal 2: Python Stylometric Variance]
+        
+        D -->|Combine Scores 0-1| E[Ensemble Scorer]
         
         E -->|Combined Score| F[UX Label Router]
         F -->|Human-Readable Label| G[(Structured Audit Log)]
@@ -64,7 +67,9 @@ graph TD
     classDef storage fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
 
     %% Appeal Flow
-    subgraph Appeal Flow [POST /appeal]
+    subgraph AppealFlow [POST /appeal]
+        direction TD
+        
         I[Creator Reasoning & Content ID] --> J(POST /appeal)
         J --> K[Log Database Lookup]
         K --> L[Update Status to 'under_review']
@@ -75,4 +80,5 @@ graph TD
     %% Apply Classes
     class J endpoint;
     class K,L process;
-    class M storage;```
+    class M storage;
+```

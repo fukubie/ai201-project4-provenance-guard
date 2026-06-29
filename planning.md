@@ -26,6 +26,8 @@
     Its Blind Spot: Short text blocks (like a short poem or a tweet) do not provide enough sentences to generate a statistically meaningful mathematical variance.
 
 ## Architecture Flow
+
+### Submission Flow
 ```mermaid
 graph TD
     %% Style definitions
@@ -46,6 +48,20 @@ graph TD
         F -->|Human-Readable Label| G[(Structured Audit Log)]
         G --> H[JSON Response back to User]
     end
+    
+    %% Apply Classes
+    class B endpoint;
+    class C,D,E,F process;
+    class G storage;
+```
+### Appeal Flow
+
+```mermaid
+graph TD
+    %% Style definitions
+    classDef endpoint fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef process fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef storage fill:#e8f5e9,stroke:#1b5e20,stroke-width:2px;
 
     %% Appeal Flow
     subgraph Appeal Flow [POST /appeal]
@@ -57,6 +73,6 @@ graph TD
     end
 
     %% Apply Classes
-    class B,J endpoint;
-    class C,D,E,F,K,L process;
-    class G,M storage;```
+    class J endpoint;
+    class K,L process;
+    class M storage;```

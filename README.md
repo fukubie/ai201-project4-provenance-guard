@@ -52,3 +52,6 @@ The system will likely misclassify non-native English speakers or technical acad
 ## AI Usage
 * **Instance 1:** I prompted Claude Code with my Architecture Narrative and Mermaid diagram to generate the boilerplate Flask app and Groq API call. I reviewed the code to ensure it clamped scores between 0.0 and 1.0.
 * **Instance 2:** I provided Claude with my stylometric plan, and it generated a Python function using `statistics.stdev`, applying a clever normalization factor of `15.0` to map the standard deviation to a 0-1 scale.
+
+## Project Walkthrough
+[Watch the video walkthrough here](https://drive.google.com/file/d/1FnXbFOpxbQO5eYk34g9FUgf--qxlUhD6/view?usp=sharing)
